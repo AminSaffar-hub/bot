@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="bot">
+<!--links-->
+    <link name="base_footprint">
+        <origin xyz="0.0 0.0 0.007" rpy="0.0 0.0 1.57079632679"/>
+    </link>
+<!--joints-->
+    <joint name="base_footprint_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+    </joint>
+</robot>>
