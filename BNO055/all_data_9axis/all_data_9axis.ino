@@ -3,7 +3,7 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 #include <EEPROM.h>
-float y;
+float yaw;
 float Xm;
 float Ym;
 float heading ;
@@ -165,9 +165,6 @@ void setup(void)
         }
     }
 
-  // Serial.println("\nFully calibrated!");
-   // Serial.println("--------------------------------");
-    //Serial.println("Calibration Results: ");
     adafruit_bno055_offsets_t newCalib;
     bno.getSensorOffsets(newCalib);
     displaySensorOffsets(newCalib);
@@ -183,11 +180,9 @@ void setup(void)
     eeAddress += sizeof(long);
     EEPROM.put(eeAddress, newCalib);
     //Serial.println("Data stored to EEPROM.");
-    
     displayCalStatus();
     delay(500);
 }
-
 void loop() {
     sensors_event_t event;
     bno.getEvent(&event);
@@ -195,12 +190,64 @@ void loop() {
     imu::Vector<3> acc = bno.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER);
     imu::Vector<3> gyro= bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
     imu::Vector<3> mag = bno.getVector(Adafruit_BNO055::VECTOR_MAGNETOMETER);
+    imu::Vector<3> VECTOR_LINEARACCEL = bno.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
 
-    Xm= mag.x();
-    Ym= mag.y();
-    heading= atan2(Ym,Xm)/(2*3.14)*360;//retour en radian 
-    y = map(heading, -180, 180, 0, 360);
+/* affichage data accelerometer */
+    //Serial.print("accX: ");
+    //Serial.print(",");
+    Serial.print(acc.x());
+    //Serial.print("accY: ");
+    Serial.print(",");
+    Serial.print(acc.y());
+    //Serial.print("accZ: ");
+    Serial.print(",");
+    Serial.print(acc.z());
+    //Serial.print("\t");
+/* affichage data gyro */
+    //Serial.print(" gyroX: ");
+    Serial.print(",");
+    Serial.print(gyro.x());
+    //Serial.print(" gyroY: ");
+    Serial.print(",");
+    Serial.print(gyro.y());
+    //Serial.print(" gyroZ: ");
+    Serial.print(",");
+    Serial.print(gyro.z());
+    //Serial.print("\t");
+/* affichage data magnetometer */
+    //Serial.print(" magX: ");
+    Serial.print(",");
+    Serial.print(mag.x());
+    //Serial.print(" magY: ");
+    Serial.print(",");
+    Serial.print(mag.y());
+    //Serial.print(" magZ: ");
+    Serial.print(",");
+    Serial.print(mag.z());
+    //Serial.print("\t");
+//quaternion data
+    imu::Quaternion quat = bno.getQuat();
+    //Serial.print(" qW: ");
+    Serial.print(",");
+    Serial.print(quat.w(), 4);
+    //Serial.print(" qX: ");
+    Serial.print(",");
+    Serial.print(quat.x(), 4);
+    //Serial.print(" qY: ");
+    Serial.print(",");
+    Serial.print(quat.y(), 4);
+    //Serial.print(" qZ: ");
+    Serial.print(",");
+    Serial.print(quat.z(), 4);
+    Serial.println("");
+    
+    
 
-    Serial.println(y);
+//     Xm= mag.x();
+//   Ym= mag.y();
+//    heading= atan2(Ym,Xm)/(2*3.14)*360;//retour en radian 
+//    yaw = map(heading, -180, 180, 0, 360);
+
+//    Serial.println(yaw);
     delay(BNO055_SAMPLERATE_DELAY_MS);
 }
