@@ -3,5 +3,4 @@
     <include file="$(find bot_description)/launch/spawn_bot.launch"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
     <node name="rviz" pkg="rviz" type="rviz" args=""/>
-    <node name="gps_to_odom" pkg="gps_common" type="utm_odometry_node"/>
 </launch>
