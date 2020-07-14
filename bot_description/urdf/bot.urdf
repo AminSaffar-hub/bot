@@ -236,10 +236,10 @@
     <gazebo>
         <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
             <updateRate>100.0</updateRate>
-            <leftFrontJoint>RFW_joint</leftFrontJoint>
-            <rightFrontJoint>LFW_joint</rightFrontJoint>
-            <leftRearJoint>RBW_joint</leftRearJoint>
-            <rightRearJoint>LBW_joint</rightRearJoint>
+            <leftFrontJoint>LFW_joint</leftFrontJoint>
+            <rightFrontJoint>RFW_joint</rightFrontJoint>
+            <leftRearJoint>LBW_joint</leftRearJoint>
+            <rightRearJoint>RBW_joint</rightRearJoint>
             <wheelSeparation>0.21</wheelSeparation>
             <wheelDiameter>0.13</wheelDiameter>
             <robotBaseFrame>base_footprint</robotBaseFrame>
