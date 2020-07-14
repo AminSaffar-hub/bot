@@ -50,76 +50,76 @@
     </link>
     <link name="RFW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="LFW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="RBW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="LBW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 0.0"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
@@ -207,41 +207,25 @@
       <gaussianNoise>0.0</gaussianNoise>
       <updateRate>20.0</updateRate>
     </plugin>
-  </gazebo>
-    
-    <gazebo>
-        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
-            <updateRate>100.0</updateRate>
-            <leftFrontJoint>RFW_joint</leftFrontJoint>
-            <rightFrontJoint>LFW_joint</rightFrontJoint>
-            <leftRearJoint>RBW_joint</leftRearJoint>
-            <rightRearJoint>LBW_joint</rightRearJoint>
-            <wheelSeparation>0.21</wheelSeparation>
-            <wheelDiameter>0.13</wheelDiameter>
-            <robotBaseFrame>base_footprint</robotBaseFrame>
-            <torque>20</torque>
-            <topicName>cmd_vel</topicName>
-            <broadcastTF>false</broadcastTF>
-        </plugin>
-    </gazebo>
+    </gazebo>  
     <gazebo>
         <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
             <alwayson>true</alwayson>
             <updaterate>1.0</updaterate>
-            <bodyname>base_footprint</bodyname>
+            <bodyname>base_link</bodyname>
             <topicname>/fix</topicname>
             <velocitytopicname>/fix_velocity</velocitytopicname>
-            <drift>0.001 0.001 0.001</drift>
-            <gaussiannoise>0.001 0.001 0.001</gaussiannoise>
-            <velocitydrift>0.001 0.001 0.001</velocitydrift>
-            <velocitygaussiannoise>0.001 0.001 0.001</velocitygaussiannoise>
+            <drift>5.0 5.0 5.0</drift>
+            <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
+            <velocitydrift>0 0 0</velocitydrift>
+            <velocitygaussiannoise>0.1 0.1 0.1</velocitygaussiannoise>
         </plugin>
     </gazebo>
 <!--transmissions-->
     <transmission name="RFW_transmission">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="RFW_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
         </joint>
         <actuator name="RFW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
@@ -252,7 +236,7 @@
     <transmission name="LFW_transmission">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="LFW_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
         </joint>
         <actuator name="LFW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
@@ -263,7 +247,7 @@
     <transmission name="RBW_transmission">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="RBW_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
         </joint>
         <actuator name="RBW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
@@ -274,7 +258,7 @@
     <transmission name="LBW_transmission">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="LBW_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
         </joint>
         <actuator name="LBW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
