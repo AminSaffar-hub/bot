@@ -1,0 +1,48 @@
+<launch>
+
+<!--  
+<arg name="razor_config_file" default="$(find tractor_localization)/params/my_razor.yaml"/>
+<node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="log" respawn="true" >
+  <rosparam file="$(arg razor_config_file)" command="load"/>
+</node>
+
+
+<node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_navsat_node" respawn="true" >
+  <param name="port" value="/dev/gps" />
+  <param name="baud" value="4800" />
+</node>
+
+
+
+<node pkg="tf" type="static_transform_publisher"
+	name="gps_transform"
+	args="0 0 0 0 0 0 base_link gps 10" />
+<node pkg="tf" type="static_transform_publisher"
+                name="imu_transform"
+                args="0 0 0 3.1416 -1.5708 0 base_link base_imu_link 10" /> -->
+
+
+	
+<!-- Navsat Transform -->
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" clear_params="true">
+    <param name="magnetic_declination_radians" value="0"/>
+    <param name="yaw_offset" value="1.5707"/>
+    <param name="zero_altitude" value="true"/>
+
+    <param name="use_odometry_yaw" value="false"/>
+    <param name="wait_for_datum" value="false"/>
+   
+    <param name="publish_filtered_gps" value="true"/>
+    <param name="broadcast_utm_transform" value="false"/>
+    
+    <remap from="/imu/data" to="/imu" />
+    <remap from="/gps/fix" to="/fix" />
+    <remap from="/odometry/filtered" to="/odometry/filtered" />
+ </node>
+
+<!-- EKF Node -->
+<node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
+  <rosparam command="load" file="$(find tractor_localization)/params/gps_imu_localization.yaml" />
+</node>
+	
+</launch>
