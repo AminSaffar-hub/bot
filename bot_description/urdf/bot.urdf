@@ -222,7 +222,7 @@
 	    <material>Gazebo/Orange</material>
 	</gazebo>
 
-    <gazebo>
+    <!--<gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
       <alwaysOn>true</alwaysOn>
       <bodyName>imu_link</bodyName>
@@ -231,15 +231,34 @@
       <gaussianNoise>0.0</gaussianNoise>
       <updateRate>20.0</updateRate>
     </plugin>
+  </gazebo>-->
+    <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>30.0</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
   </gazebo>
-    
     <gazebo>
         <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
             <updateRate>100.0</updateRate>
-            <leftFrontJoint>RFW_joint</leftFrontJoint>
-            <rightFrontJoint>LFW_joint</rightFrontJoint>
-            <leftRearJoint>RBW_joint</leftRearJoint>
-            <rightRearJoint>LBW_joint</rightRearJoint>
+            <leftFrontJoint>LFW_joint</leftFrontJoint>
+            <rightFrontJoint>RFW_joint</rightFrontJoint>
+            <leftRearJoint>LBW_joint</leftRearJoint>
+            <rightRearJoint>RBW_joint</rightRearJoint>
             <wheelSeparation>0.21</wheelSeparation>
             <wheelDiameter>0.13</wheelDiameter>
             <robotBaseFrame>base_footprint</robotBaseFrame>
