@@ -1,0 +1,22 @@
+bot:
+  joint_state_controller:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 50
+
+  jointRF_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: RFW_joint
+    pid: {p: 1.0, i: 0.01, d: 0.0}
+
+  jointLF_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: LFW_joint
+    pid: {p: 1.0, i: 0.01, d: 0.0}
+  jointRB_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: RBW_joint
+    pid: {p: 1.0, i: 0.01, d: 0.0}
+  jointLB_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: LBW_joint
+    pid: {p: 1.0, i: 0.01, d: 0.0}

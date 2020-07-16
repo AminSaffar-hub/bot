@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+    <rosparam file="$(find bot_controller)/config/bot_control.yaml" command="load"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" ns="/bot"
+    output="screen"  args="jointRF_velocity_controller jointLF_velocity_controller jointRB_velocity_controller jointLB_velocity_controller joint_state_controller "/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <remap from="/joint_states" to="/bot/joint_states"/>
+    </node>
+</launch>

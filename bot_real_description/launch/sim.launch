@@ -2,5 +2,5 @@
 <launch>
     <include file="$(find bot_real_description)/launch/spawn_bot.launch"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-    <node name="rviz" pkg="rviz" type="rviz" args=""/>
+    <node name="rviz" pkg="rviz" type="rviz" args="$(find bot_real_description)/config/df.rviz"/>
 </launch>
