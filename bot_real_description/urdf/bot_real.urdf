@@ -264,7 +264,7 @@
         </joint>
         <actuator name="RFW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </actuator>
     </transmission>
 
@@ -275,7 +275,7 @@
         </joint>
         <actuator name="LFW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </actuator>
     </transmission>
 
@@ -286,7 +286,7 @@
         </joint>
         <actuator name="RBW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </actuator>
     </transmission>
 
@@ -297,7 +297,7 @@
         </joint>
         <actuator name="LBW_actuator">
             <mechanicalReduction>7</mechanicalReduction>
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </actuator>
     </transmission>
     
