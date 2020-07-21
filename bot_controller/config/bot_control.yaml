@@ -4,19 +4,18 @@ bot:
     publish_rate: 50
 
   jointRF_velocity_controller:
-    type: effort_controllers/JointVelocityController
+    type: velocity_controllers/JointVelocityController
     joint: RFW_joint
-    pid: {p: 1.0, i: 0.01, d: 0.0}
-
+    pid: {p: 10.0, i: 0.01, d: 5.0}
   jointLF_velocity_controller:
-    type: effort_controllers/JointVelocityController
+    type: velocity_controllers/JointVelocityController
     joint: LFW_joint
-    pid: {p: 1.0, i: 0.01, d: 0.0}
+    pid: {p: 100.0, i: 0.01, d: 5.0}
   jointRB_velocity_controller:
-    type: effort_controllers/JointVelocityController
+    type: velocity_controllers/JointVelocityController
     joint: RBW_joint
-    pid: {p: 1.0, i: 0.01, d: 0.0}
+    pid: {p: 100.0, i: 0.01, d: 5.0}
   jointLB_velocity_controller:
-    type: effort_controllers/JointVelocityController
+    type: velocity_controllers/JointVelocityController
     joint: LBW_joint
-    pid: {p: 1.0, i: 0.01, d: 0.0}
+    pid: {p: 10.0, i: 0.01, d: 5.0}

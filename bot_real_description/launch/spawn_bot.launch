@@ -5,19 +5,7 @@
         <arg name="y" value="0.0"/>
         <arg name="z" value="0.2"/>
         <arg name="urdf_robot_file" value="$(find bot_real_description)/urdf/bot_real.urdf"/>
-        <arg name="robot_name" value="/bot"/>
+        <arg name="robot_name" value=""/>
     </include>
-
-    <!-- <rosparam file="$(find bot_real_description)/config/joint_states.yaml" command="load"/>
-
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen"  args="joint_state_controller bot_velocity_controller "/>
-
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
-        <param name="publish_frequency" type="double" value="30.0"/>
-    </node>
-    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-        <param name="default_topic" value="/bot_velocity_controller/cmd_vel"/> 
-    </node> -->
-    
+ 
 </launch>
