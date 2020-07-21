@@ -10,7 +10,8 @@ from std_msgs.msg import Float64
 
 class imu_serial :
     def __init__(self):
-        self.Ard = serial.Serial('/dev/ttyUSB0',115200)
+        port = rospy.get_param('~port',default='/dev/ttyUSB0')
+        self.Ard = serial.Serial(port,115200)
         self.imu = Imu()
         self.imu.header.frame_id = "imu_link"
         self.Mag = MagneticField()

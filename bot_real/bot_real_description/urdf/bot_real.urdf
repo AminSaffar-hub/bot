@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 <robot name="bot">
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <legacyModeNS>true</legacyModeNS>
-        </plugin>
-    </gazebo>
 <!--links-->
 
     <link name="base_footprint">
@@ -187,75 +182,6 @@
         <axis xyz="0.0 1.0 0.0"/>
         <limit effort="100" velocity="100"/> 
     </joint>
-
-
-<!--gazebo plugins-->
-    <gazebo reference="RFW_link">
-        <mu1>20000000000.0</mu1>
-	    <mu2>20000000000.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>1.0</kd>
-	    <material>Gazebo/Black</material>
-	</gazebo>
-    <gazebo reference="LFW_link">
-        <mu1>20000000000.0</mu1>
-	    <mu2>20000000000.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>1.0</kd>
-	    <material>Gazebo/Black</material>
-	</gazebo>
-    <gazebo reference="RBW_link">
-        <mu1>20000000000.0</mu1>
-	    <mu2>20000000000.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>1.0</kd>
-	    <material>Gazebo/Black</material>
-	</gazebo>
-    <gazebo reference="LBW_link">
-        <mu1>20000000000.0</mu1>
-	    <mu2>20000000000.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>1.0</kd>
-	    <material>Gazebo/Black</material>
-	</gazebo>
-    <gazebo reference="base_link">
-	    <material>Gazebo/Orange</material>
-	</gazebo>
-
-    <gazebo reference="imu_link">
-    <gravity>true</gravity>
-    <sensor name="imu_sensor" type="imu">
-      <always_on>true</always_on>
-      <update_rate>30.0</update_rate>
-      <visualize>true</visualize>
-      <topic>__default_topic__</topic>
-      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <topicName>imu</topicName>
-        <bodyName>imu_link</bodyName>
-        <updateRateHZ>10.0</updateRateHZ>
-        <gaussianNoise>0.0</gaussianNoise>
-        <xyzOffset>0 0 0</xyzOffset>
-        <rpyOffset>0 0 0</rpyOffset>
-        <frameName>imu_link</frameName>
-        <initialOrientationAsReference>false</initialOrientationAsReference>
-      </plugin>
-      <pose>0 0 0 0 0 0</pose>
-    </sensor>
-  </gazebo>
-    <gazebo>
-        <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
-            <alwayson>true</alwayson>
-            <updaterate>1.0</updaterate>
-            <bodyname>gps_link</bodyname>
-            <frameId>gps_link</frameId>
-            <topicname>/fix</topicname>
-            <velocitytopicname>/fix_velocity</velocitytopicname>
-            <drift>0.0 0.0 0.0</drift>
-            <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
-            <velocitydrift>0 0 0</velocitydrift>
-            <velocitygaussiannoise>0.1 0.1 0.1</velocitygaussiannoise>
-        </plugin>
-    </gazebo>
 <!--transmissions-->
     <transmission name="RFW_transmission">
         <type>transmission_interface/SimpleTransmission</type>
