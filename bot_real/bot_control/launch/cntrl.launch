@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find bot_control)/launch/control.launch"/>
+    <include file="$(find bot_control)/launch/hardware_interface.launch"/>
+</launch>
