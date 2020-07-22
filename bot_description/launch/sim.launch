@@ -5,4 +5,5 @@
     <node name="rviz" pkg="rviz" type="rviz" args=""/>
     <include file="$(find tractor_localization)/launch/localization.launch"/>
     <include file="$(find bot_navigation)/launch/start_navigation_with_gps_ekf.launch"/>
+    <include file="$(find outdoor_waypoint_nav)/launch/include/send_goals_sim.launch"/>
 </launch>
