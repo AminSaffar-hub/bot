@@ -22,6 +22,5 @@
         "/home/modamine/catkin_ws/devel_isolated/depth_nav_msgs/lib/python2.7/dist-packages",
         "/home/modamine/catkin_ws/devel/lib/python2.7/dist-packages",
         "/opt/ros/kinetic/lib/python2.7/dist-packages"
-    ],
-    "ros.distro": "kinetic"
+    ]
 }
