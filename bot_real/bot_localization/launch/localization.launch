@@ -18,6 +18,7 @@
 
     <param name="use_odometry_yaw" value="false"/>
     <param name="wait_for_datum" value="false"/>
+    <!--rosparam param="datum">[55.944904, -3.186693, 0.0, odom, base_footprint]</rosparam-->
    
     <param name="publish_filtered_gps" value="true"/>
     <param name="broadcast_utm_transform" value="false"/>

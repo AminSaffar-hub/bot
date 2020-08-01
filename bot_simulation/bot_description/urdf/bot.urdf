@@ -232,7 +232,7 @@
       <updateRate>20.0</updateRate>
     </plugin>
   </gazebo>-->
-    <gazebo reference="imu_link">
+    <!--gazebo reference="imu_link">
     <gravity>true</gravity>
     <sensor name="imu_sensor" type="imu">
       <always_on>true</always_on>
@@ -251,8 +251,8 @@
       </plugin>
       <pose>0 0 0 0 0 0</pose>
     </sensor>
-  </gazebo>
-    <gazebo>
+  </gazebo-->
+    <!--gazebo>
         <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
             <updateRate>10.0</updateRate>
             <leftFrontJoint>LFW_joint</leftFrontJoint>
@@ -266,7 +266,7 @@
             <topicName>cmd_vel</topicName>
             <broadcastTF>false</broadcastTF>
         </plugin>
-    </gazebo>
+    </gazebo-->
     <gazebo>
         <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
             <alwayson>true</alwayson>
