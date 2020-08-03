@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <!-- Run move base-->
+    <include file="$(find bot_navigation)/launch/move_base.launch" />
+
+    <!-- fake laser node-->
+    <node pkg="bot_navigation" type="fake_laser.py" name="fake_laser"/> 
+    
+</launch>
