@@ -14,7 +14,11 @@ class Control :
         rospy.Subscriber("/odom",Odometry,self.odom_calback,queue_size=10)
         self.pub = rospy.Publisher("/vel_pose",Float32MultiArray,queue_size=10)
         self.Vel_table = Float32MultiArray()
-
+	self.Vel_table.data.append(self.wheel_fl)
+        self.Vel_table.data.append(self.wheel_bl)
+        self.Vel_table.data.append(self.wheel_fr)
+        self.Vel_table.data.append(self.wheel_br)
+	self.pub.publish(self.Vel_table)
     def odom_calback(self,data):
         vx = data.twist.twist.linear.x
         vy = data.twist.twist.linear.y
@@ -31,10 +35,10 @@ class Control :
         self.wheel_fr = (linearx + (self.Wheel_separation_width/2)* angularz) / self.Wheel_radius
         self.wheel_bl = self.wheel_fl
         self.wheel_br = self.wheel_fr
-        self.Vel_table[0] = self.wheel_fl
-        self.Vel_table[1] = self.wheel_bl
-        self.Vel_table[2] = self.wheel_fr
-        self.Vel_table[3] = self.wheel_br
+        self.Vel_table.data.append(self.wheel_fl)
+        self.Vel_table.data.append(self.wheel_bl)
+        self.Vel_table.data.append(self.wheel_fr)
+        self.Vel_table.data.append(self.wheel_br)
 
         self.pub.publish(self.Vel_table)
 

@@ -1,14 +1,14 @@
 <launch>
 
-<node pkg="bot_prg" type="serial_imu.py" name="imu_node">
+<!--node pkg="bot_prg" type="serial_imu.py" name="imu_node">
   <param name="port" value="/dev/ttyUSB0"/>
-</node>
+</node-->
 
 
-<node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_navsat_node" respawn="true" >
+<!--node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_navsat_node" respawn="true" >
   <param name="port" value="/dev/gps" />
   <param name="baud" value="4800" />
-</node>
+</node-->
 
 <!-- Navsat Transform -->
   <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" clear_params="true">
@@ -32,7 +32,7 @@
   <rosparam command="load" file="$(find bot_localization)/params/gps_imu_localization.yaml" />
 </node>
 
-<node pkg="bot_localization" type="hardware_velocity.py" name ="hardware_transformations"/>
+<!--node pkg="bot_localization" type="hardware_velocity.py" name ="hardware_transformations"/-->
 
 
 </launch>
