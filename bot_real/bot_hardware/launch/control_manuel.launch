@@ -1,0 +1,6 @@
+<launch>
+
+<node pkg="bot_hardware" type="joy_control.py" name ="joy_control"/>
+<include file="$(find ps4_ros)/launch/ps4.launch"/>
+
+</launch>

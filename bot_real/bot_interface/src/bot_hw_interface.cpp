@@ -49,8 +49,8 @@ botHWInterface::botHWInterface(ros::NodeHandle &nh, urdf::Model *urdf_model)
 {
   ROS_INFO_NAMED("bot_hw_interface", "botHWInterface Ready.");
   //
-  wheel_vel_pub = nh_.advertise<std_msgs::Float32MultiArray>("set_vel", 10);
-  wheel_vel_sub = nh_.subscribe("/vel_cmd", 10,
+  wheel_vel_pub = nh_.advertise<std_msgs::Float32MultiArray>("/vel_cmd", 10);
+  wheel_vel_sub = nh_.subscribe("/vel_pose", 10,
                                 &botHWInterface::read_vel, this);
 }
 
@@ -143,7 +143,7 @@ void botHWInterface::enforceLimits(ros::Duration &period)
 
 
 void botHWInterface::read_vel(
-    const std_msgs::Int64MultiArray::ConstPtr &vel_msg) {
+    const std_msgs::Float32MultiArray::ConstPtr &vel_msg) {
   curr_vel[0] = vel_msg->data[2];
   curr_vel[1] = vel_msg->data[3];
   curr_vel[2] = vel_msg->data[0];

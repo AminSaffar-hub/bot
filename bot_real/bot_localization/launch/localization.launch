@@ -10,10 +10,6 @@
   <param name="baud" value="4800" />
 </node>
 
-
-
-
-	
 <!-- Navsat Transform -->
   <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" clear_params="true">
     <param name="magnetic_declination_radians" value="0"/>
@@ -22,6 +18,7 @@
 
     <param name="use_odometry_yaw" value="false"/>
     <param name="wait_for_datum" value="false"/>
+    <!--rosparam param="datum">[55.944904, -3.186693, 0.0, odom, base_footprint]</rosparam-->
    
     <param name="publish_filtered_gps" value="true"/>
     <param name="broadcast_utm_transform" value="false"/>
@@ -35,5 +32,8 @@
 <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
   <rosparam command="load" file="$(find bot_localization)/params/gps_imu_localization.yaml" />
 </node>
-	
+
+<node pkg="bot_localization" type="hardware_velocity.py" name ="hardware_transformations"/>
+
+
 </launch>

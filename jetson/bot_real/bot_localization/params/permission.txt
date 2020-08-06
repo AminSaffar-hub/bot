@@ -1,5 +1,0 @@
-sudo chmod 777 /dev/serial/by-id/usb-Emlid_Reach+-if02
-sudo chmod 777 /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AC008RXB-if00-port0
-sudo chmod 777 /dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_55735323136351014250-if00
-
-sudo chmod 777 /dev/serial/by-id/usb-Emlid_Reach+-if02 /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AC008RXB-if00-port0 /dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_55735323136351014250-if00

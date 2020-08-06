@@ -74,7 +74,7 @@ public:
   virtual void enforceLimits(ros::Duration &period);
 
   // Subscriber wheel encoder Callback
-  void read_vel(const std_msgs::Int64MultiArray::ConstPtr &vel_msg);
+  void read_vel(const std_msgs::Float32MultiArray::ConstPtr &vel_msg);
   
 
 protected:
