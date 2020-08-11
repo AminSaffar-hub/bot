@@ -38,13 +38,13 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
             <geometry>
-                <box size="0.001 0.001 0.001"/>
+                <box size="0.01 0.01 0.01"/>
             </geometry>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
             <geometry>
-                <box size="0.001 0.001 0.001"/>
+                <box size="0.01 0.01 0.01"/>
             </geometry>
         </collision>
     </link>
@@ -57,88 +57,88 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
             <geometry>
-                <box size="0.001 0.001 0.001"/>
+                <box size="0.01 0.01 0.01"/>
             </geometry>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
             <geometry>
-                <box size="0.001 0.001 0.001"/>
+                <box size="0.01 0.01 0.01"/>
             </geometry>
         </collision>
     </link>
     <link name="RFW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="LFW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="RBW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
     </link>
     <link name="LBW_link">
         <visual >
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <geometry>
-                <mesh filename="package://bot_description/models/meshes/roue.dae"/>
+                <cylinder radius="0.065" length="0.055"/>
             </geometry>
         </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
             <mass value="0.156"/>
             <inertia ixx="0.000211575" ixy="0.0" ixz="0.0" iyy="0.000211575" iyz="0.0" izz="0.00032955"/>
         </inertial>
@@ -150,12 +150,12 @@
         <child link="base_link"/>
     </joint>
     <joint name="imu_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <origin xyz="-0.1 0.0 0.245" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="imu_link"/>
     </joint>
     <joint name="gps_joint" type="fixed">
-        <origin xyz="0.05 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.095 0.0 0.245" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="gps_link"/>
     </joint>

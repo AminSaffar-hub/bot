@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy 
-from nav_msgs.msg import Odometry
+from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32MultiArray
 class Control : 
     def __init__(self):
@@ -11,7 +11,7 @@ class Control :
         self.wheel_fl = 0.0
         self.wheel_br = 0.0
         self.wheel_bl  = 0.0
-        rospy.Subscriber("/odom",Odometry,self.odom_calback,queue_size=10)
+        rospy.Subscriber("/cmd_vel",Twist,self.odom_calback,queue_size=10)
         self.pub = rospy.Publisher("/vel_pose",Float32MultiArray,queue_size=10)
         self.Vel_table = Float32MultiArray()
 	self.Vel_table.data.append(self.wheel_fl)
@@ -20,9 +20,9 @@ class Control :
         self.Vel_table.data.append(self.wheel_br)
 	self.pub.publish(self.Vel_table)
     def odom_calback(self,data):
-        vx = data.twist.twist.linear.x
-        vy = data.twist.twist.linear.y
-        az = data.twist.twist.angular.z
+        vx = data.linear.x
+        vy = data.linear.y
+        az = data.angular.z
         self.converting(vx,vy,az)
     
     def converting(self,linearx,lineary,angularz):
@@ -35,10 +35,10 @@ class Control :
         self.wheel_fr = (linearx + (self.Wheel_separation_width/2)* angularz) / self.Wheel_radius
         self.wheel_bl = self.wheel_fl
         self.wheel_br = self.wheel_fr
-        self.Vel_table.data.append(self.wheel_fl)
-        self.Vel_table.data.append(self.wheel_bl)
-        self.Vel_table.data.append(self.wheel_fr)
-        self.Vel_table.data.append(self.wheel_br)
+        self.Vel_table.data[0] = (self.wheel_fl)
+        self.Vel_table.data[1] = (self.wheel_bl)
+        self.Vel_table.data[2] = (self.wheel_fr)
+        self.Vel_table.data[3] = (self.wheel_br)
 
         self.pub.publish(self.Vel_table)
 
