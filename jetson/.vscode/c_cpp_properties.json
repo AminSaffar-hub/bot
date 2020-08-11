@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/abdessalem/catkin_ws/devel/include/**",
+                "/opt/ros/kinetic/include/**",
+                "/home/abdessalem/catkin_ws/src/ezzayra_bot/bot_real/bot_interface/include/**",
+                "/home/abdessalem/catkin_ws/src/first_test_navigation/include/**",
+                "/home/abdessalem/catkin_ws/src/gps_umd/gps_common/include/**",
+                "/home/abdessalem/catkin_ws/src/waypoint_nav/hector_slam/hector_mapping_nav/include/**",
+                "/home/abdessalem/catkin_ws/src/ros_darknet/include/**",
+                "/home/abdessalem/catkin_ws/src/ros_essentials_cpp/include/**",
+                "/home/abdessalem/catkin_ws/src/usb_cam/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
