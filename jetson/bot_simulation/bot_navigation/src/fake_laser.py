@@ -4,7 +4,7 @@ import rospy
 from sensor_msgs.msg import LaserScan
 import math
 
-rospy.init_node('laser_scan_publisher')
+rospy.init_node('fake_laser')
 
 scan_pub = rospy.Publisher('/bot/laser/scan', LaserScan, queue_size=50)
 
@@ -12,14 +12,14 @@ num_readings = 100
 laser_frequency = 40
 
 count = 0
-r = rospy.Rate(1.0)
+r = rospy.Rate(10.0)
 while not rospy.is_shutdown():
     current_time = rospy.Time.now()
 
     scan = LaserScan()
 
     scan.header.stamp = current_time
-    scan.header.frame_id = 'base_footprint'
+    scan.header.frame_id = 'fake_laser_link'
     scan.angle_min = -1.57
     scan.angle_max = 1.57
     scan.angle_increment = 3.14 / num_readings

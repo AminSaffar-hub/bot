@@ -21,4 +21,6 @@
         <param name="frame_id" value="gps_link"/>
     </node>
 
+    <node pkg="bot_navigation" type="fake_laser.py" name="fake_laser"/> 
+
 </launch>

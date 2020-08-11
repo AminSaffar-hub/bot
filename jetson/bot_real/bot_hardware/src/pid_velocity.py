@@ -68,7 +68,7 @@ class PID_Control:
                 self._pwm_base[i] = 255.0 
             elif self._pwm_base[i] < -255.0 :
                 self._pwm_base[i] = -255.0 
-            
+        rospy.loginfo(self._pwm_base)    
     
 
 
@@ -81,13 +81,22 @@ class PID_Control:
             self._prev_error[i] = self._error[i]
             
             self._cmd[i] = self._KP *self._error[i] + self._KI *self._error[i] + self._KD *self._error[i]
-            rospy.loginfo(self._cmd)
         self.set_in_interval()
 
-        self._pwm_pub.data[0] = self._pwm_base[0]
-        self._pwm_pub.data[1] = self._pwm_base[1]
-        self._pwm_pub.data[2] = self._pwm_base[2]
-        self._pwm_pub.data[3] = self._pwm_base[3]
+        if self._Vc == [0.0,0.0,0.0,0.0]:
+            self._pwm_pub.data[0] = 0.0
+            self._pwm_pub.data[1] = 0.0
+            self._pwm_pub.data[2] = 0.0
+            self._pwm_pub.data[3] = 0.0
+            self._pwm_base[0] = 0.0
+            self._pwm_base[1] = 0.0
+            self._pwm_base[2] = 0.0
+            self._pwm_base[3] = 0.0
+        else:
+            self._pwm_pub.data[0] = self._pwm_base[0]
+            self._pwm_pub.data[1] = self._pwm_base[3]
+            self._pwm_pub.data[2] = self._pwm_base[2]
+            self._pwm_pub.data[3] = self._pwm_base[1]
 
         self.pub.publish(self._pwm_pub)
     

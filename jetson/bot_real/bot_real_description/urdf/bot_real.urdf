@@ -5,6 +5,9 @@
     <link name="base_footprint">
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </link>
+    <link name="fake_laser_link">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </link>
     <link name="base_link">
         <visual >
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
@@ -144,13 +147,18 @@
         <parent link="base_footprint"/>
         <child link="base_link"/>
     </joint>
+    <joint name="fake_laser_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0"/>
+        <parent link="base_link"/>
+        <child link="fake_laser_link"/>
+    </joint>
     <joint name="imu_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <origin xyz="-0.1 0.0 0.245" rpy="0.0 0.0 3.14"/>
         <parent link="base_link"/>
         <child link="imu_link"/>
     </joint>
     <joint name="gps_joint" type="fixed">
-        <origin xyz="0.05 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.095 0.0 0.245" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="gps_link"/>
     </joint>

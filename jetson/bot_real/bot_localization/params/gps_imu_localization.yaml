@@ -133,7 +133,7 @@ imu0_config: [false, false, false,
               false, false,  true,
               false, false, false,
               false, false,  false,
-              true, false, false] # false the linear acceleration y then x
+              true, true, false] # false the linear acceleration y then x
 imu0_nodelay: false
 imu0_differential: false
 imu0_relative: true
