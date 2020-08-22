@@ -9,9 +9,9 @@ class PID_Control:
             obj.append(0.0)
     
     def __init__(self):
-        self._KP = 1.0
+        self._KP = 3.0
         self._KD = 0.0
-        self._KI = 0.0
+        self._KI = 0.02
 
         self._Vc = []
         self._Vpos = []

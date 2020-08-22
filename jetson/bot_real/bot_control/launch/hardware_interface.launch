@@ -4,7 +4,8 @@
   <!--Load Hardware Interface Configuration to param server -->
   <rosparam file="$(find bot_control)/config/hardware_interface.yaml" command="load"/>
   <!-- start hardware interface node for the arm -->
-  <node name="bot_hardware_interface" pkg="bot_interface" type="bot_hw_main"
-          output="screen" launch-prefix=""/>
+  <node name="bot_hardware_interface" pkg="bot_interface" type="bot_hw_main" output="screen" launch-prefix="">
+    <param name="loop_hz" value="30.0"/>
+    </node>
 
 </launch>
