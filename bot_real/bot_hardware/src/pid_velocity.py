@@ -9,9 +9,9 @@ class PID_Control:
             obj.append(0.0)
     
     def __init__(self):
-        self._KP = 0.2
+        self._KP = 0.02
         self._KD = 0.0
-        self._KI = 0.0
+        self._KI = 0.0005
 
         self._Vc = []
         self._Vpos = []
@@ -32,7 +32,11 @@ class PID_Control:
         self.appending_variables(self._sum_error)
         self.appending_variables(self._diff_error)
         self.appending_variables(self._cmd)
-        self.appending_variables(self._pwm_base)
+        #self.appending_variables(self._pwm_base)
+        self._pwm_base.append(80.0)
+        self._pwm_base.append(80.0)
+        self._pwm_base.append(80.0)
+        self._pwm_base.append(80.0)
         self.appending_variables(self._pwm)
 
         rospy.init_node('pwm_controller', anonymous=True)
@@ -61,15 +65,18 @@ class PID_Control:
     
     
     def set_in_interval(self):
-
+        self._cmd[2] *= 2.5 
+        self._cmd[3] *= 2.5
         for i in range(0,4) :
-            self._pwm_base[i] = self._pwm_base[i] + self._cmd[i]
+           # if (i == 2) or (i == 3): self._cmd += 30 
+            self._pwm_base[i] =  self._pwm_base[i] + self._cmd[i]
             
             if self._pwm_base[i] > 255.0 :
                 self._pwm_base[i] = 255.0 
             elif self._pwm_base[i] < -255.0 :
                 self._pwm_base[i] = -255.0 
-            
+
+
             
     
 
@@ -83,7 +90,7 @@ class PID_Control:
             self._prev_error[i] = self._error[i]
             
             self._cmd[i] = self._KP *self._error[i] + self._KI *self._error[i] + self._KD *self._error[i]
-            #rospy.loginfo(self._error)
+            rospy.loginfo(self._error)
             
             # self._pwm_pub.data[1] = 0.0
             # self._pwm_pub.data[2] = 0.0
@@ -93,12 +100,16 @@ class PID_Control:
             self._pwm_pub.data[1] = 0.0
             self._pwm_pub.data[2] = 0.0
             self._pwm_pub.data[3] = 0.0
+            self._pwm_base[0] = 80.0
+            self._pwm_base[1] = 80.0
+            self._pwm_base[2] = 80.0
+            self._pwm_base[3] = 80.0
         else :
             self.set_in_interval()
-            self._pwm_pub.data[0] = self._pwm_base[0]
-            self._pwm_pub.data[1] = self._pwm_base[1]
-            self._pwm_pub.data[2] = self._pwm_base[2]
-            self._pwm_pub.data[3] = self._pwm_base[3]
+            self._pwm_pub.data[0] = self._pwm_base[0] # left 
+            self._pwm_pub.data[1] = self._pwm_base[2] # right 
+            self._pwm_pub.data[2] = self._pwm_base[3] # right B
+            self._pwm_pub.data[3] = self._pwm_base[1] # left B
 
         self.pub.publish(self._pwm_pub)
     
