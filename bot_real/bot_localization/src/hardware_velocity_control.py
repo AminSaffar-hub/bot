@@ -11,9 +11,14 @@ class Control :
         self.wheel_fl = 0.0
         self.wheel_br = 0.0
         self.wheel_bl  = 0.0
-        rospy.Subscriber("/odom",Odometry,self.odom_calback,queue_size=10)
+        rospy.Subscriber("/odometry/filtered",Odometry,self.odom_calback,queue_size=10)
         self.pub = rospy.Publisher("/vel_pose",Float32MultiArray,queue_size=10)
         self.Vel_table = Float32MultiArray()
+        self.Vel_table.data.append(0.0)
+        self.Vel_table.data.append(0.0)
+        self.Vel_table.data.append(0.0)
+        self.Vel_table.data.append(0.0)
+        
 
     def odom_calback(self,data):
         vx = data.twist.twist.linear.x
@@ -31,10 +36,10 @@ class Control :
         self.wheel_fr = (linearx + (self.Wheel_separation_width/2)* angularz) / self.Wheel_radius
         self.wheel_bl = self.wheel_fl
         self.wheel_br = self.wheel_fr
-        self.Vel_table[0] = self.wheel_fl
-        self.Vel_table[1] = self.wheel_bl
-        self.Vel_table[2] = self.wheel_fr
-        self.Vel_table[3] = self.wheel_br
+        self.Vel_table.data[0] = self.wheel_fl
+        self.Vel_table.data[1] = self.wheel_bl
+        self.Vel_table.data[2] = self.wheel_fr
+        self.Vel_table.data[3] = self.wheel_br
 
         self.pub.publish(self.Vel_table)
 
@@ -60,7 +65,7 @@ class Control :
         self.wheel_br = (x_rpm_ - y_rpm_ + tan_rpm_)*(2*3.14/60)"""
         
 
-        rospy.loginfo("wheelFL = %f , wheelBL = %f ,wheelFR = %f , wheelBR = %f "%(self.wheel_fl,self.wheel_bl,self.wheel_fr,self.wheel_br))
+        #rospy.loginfo("wheelFL = %f , wheelBL = %f ,wheelFR = %f , wheelBR = %f "%(self.wheel_fl,self.wheel_bl,self.wheel_fr,self.wheel_br))
 
     
     def run(self):

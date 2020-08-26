@@ -7,10 +7,9 @@ from sensor_msgs.msg import MagneticField
 import tf
 from std_msgs.msg import Float64
 
-
 class imu_serial :
     def __init__(self):
-        port = rospy.get_param('~port',default='/dev/ttyUSB0')
+        port = rospy.get_param('~port',default='/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AC008RXB-if00-port0')
         self.Ard = serial.Serial(port,115200)
         self.imu = Imu()
         self.imu.header.frame_id = "imu_link"
@@ -18,7 +17,7 @@ class imu_serial :
         self.output_node = Float64()
         self.dataPacket = None
         self.data_f = 0.0
-        self.pub_imu = rospy.Publisher('/BNO055', Imu, queue_size=10)
+        self.pub_imu = rospy.Publisher('/imu', Imu, queue_size=10)
         self.pub_tf = tf.TransformBroadcaster()
         rospy.init_node('serial_imu', anonymous=True)
         time.sleep(2)
@@ -89,7 +88,9 @@ class imu_serial :
         self.imu.linear_acceleration.y = float(self.message_info[1])
         self.imu.linear_acceleration.z = float(self.message_info[2])
         self.imu.linear_acceleration_covariance = self.build_covariance(3)
-        self.pub_tf.sendTransform((0,0,0),self.imu.orientation,rospy.Time.now,"imu_link","odom")
+        self.imu.header.stamp.secs = rospy.get_time()
+        
+        #self.pub_tf.sendTransform((0,0,0),self.imu.orientation,rospy.Time.now,"imu_link","odom")
         self.pub_imu.publish(self.imu)
 
     
