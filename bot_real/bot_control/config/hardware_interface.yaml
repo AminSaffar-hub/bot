@@ -1,12 +1,12 @@
 generic_hw_control_loop:
   loop_hz: 50
-  cycle_time_error_threshold: 0.03
+  cycle_time_error_threshold: 0.1
 
 # Settings for ros_control hardware interface
 hardware_interface:
   joints:
-    - LFW_joint
-    - LBW_joint
     - RFW_joint
     - RBW_joint
+    - LFW_joint
+    - LBW_joint
     

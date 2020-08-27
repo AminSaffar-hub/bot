@@ -27,6 +27,4 @@
     <remap from="/odometry/filtered" to="/odometry/filtered" />
  </node>
 
-<node pkg="bot_localization" type="hardware_velocity_control.py" name="hardware_velocity" output="screen"/>
-
 </launch>
