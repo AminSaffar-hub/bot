@@ -52,19 +52,19 @@ class PID_Control:
         self._Vc[2] = tab.data[2]
         self._Vc[3] = tab.data[3]
         
-        if abs(self._Vc[0]- self._oldVc[0])> 5.0 :
+        if abs(self._Vc[0]- self._oldVc[0])> 1.0 :
             self.reset(0)
         self._oldVc[0] = self._Vc[0]
 
-        if abs(self._Vc[1]- self._oldVc[1])> 5.0  :
+        if abs(self._Vc[1]- self._oldVc[1])> 1.0  :
             self.reset(1)
         self._oldVc[1] = self._Vc[1]
 
-        if (self._Vc[2] - self._oldVc[2])> 5.0  :
+        if (self._Vc[2] - self._oldVc[2])> 1.0  :
             self.reset(2)
         self._oldVc[2] = self._Vc[2]
 
-        if (self._Vc[3] - self._oldVc[3])> 5.0  :
+        if (self._Vc[3] - self._oldVc[3])> 1.0  :
             self.reset(3)
         self._oldVc[3] = self._Vc[3]
 
