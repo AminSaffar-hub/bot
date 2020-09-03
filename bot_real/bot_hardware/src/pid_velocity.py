@@ -9,9 +9,13 @@ class PID_Control:
             obj.append(0.0)
     
     def __init__(self):
-        self._KP = 0.02
-        self._KD = 0.0
-        self._KI = 0.0005
+        rospy.init_node('pwm_controller', anonymous=True)
+
+        self._KP = 0.05
+        #self._KP = 5
+        self._KD = 0
+        #self._KI = 2
+        self._KI = 0.00005
 
         self._Vc = []
         self._oldVc = []
@@ -35,10 +39,9 @@ class PID_Control:
         self.appending_variables(self._cmd)
         self.appending_variables(self._oldVc)
         self.appending_variables(self._pwm_base)
-        self._base = 70
+        self._base = 0
         self.appending_variables(self._pwm)
-
-        rospy.init_node('pwm_controller', anonymous=True)
+        self.prev_pid_time = rospy.Time.now()
         self.pub = rospy.Publisher('/pwm_cmd',Float32MultiArray,queue_size=10)
         self._pwm_pub = Float32MultiArray()
         self.appending_variables(self._pwm_pub.data)
@@ -83,7 +86,7 @@ class PID_Control:
             self._sum_error[i] = 0.0
             self._diff_error[i] = 0.0
             self._prev_error[i] = 0.0
-            self._cmd[i] = 0.0
+            #self._cmd[i] = 0.0
         
     
     def set_in_interval(self):
@@ -104,11 +107,13 @@ class PID_Control:
 
 
     def velocity_control(self):
-
+        pid_dt_duration = rospy.Time.now() - self.prev_pid_time
+        pid_dt = pid_dt_duration.to_sec()
+        self.prev_pid_time = rospy.Time.now()
         for i in range(0,4) :
             self._error[i] = self._Vc[i] - self._Vpos[i]
-            self._sum_error[i] = self._sum_error[i] + self._error[i]
-            self._diff_error[i] = self._error[i] - self._prev_error[i]
+            self._sum_error[i] = self._sum_error[i] + self._error[i] * pid_dt
+            self._diff_error[i] = (self._error[i] - self._prev_error[i]) / pid_dt
             self._prev_error[i] = self._error[i]
             
             self._cmd[i] = self._KP *self._error[i] + self._KI *self._error[i] + self._KD *self._error[i]
@@ -122,12 +127,23 @@ class PID_Control:
             self._pwm_pub.data[1] = 0.0
             self._pwm_pub.data[2] = 0.0
             self._pwm_pub.data[3] = 0.0
-            self._pwm_base[0] = 70.0
-            self._pwm_base[1] = 70.0
-            self._pwm_base[2] = 70.0
-            self._pwm_base[3] = 70.0
+            self._pwm_base[0] = self._base
+            self._pwm_base[1] = self._base
+            self._pwm_base[2] = self._base
+            self._pwm_base[3] = self._base
         else :
-            self.set_in_interval()
+            for i in range(0,4) :
+            # if (i == 2) or (i == 3): self._cmd += 30 
+                self._pwm_base[i] = self._cmd[i] + self._pwm_base[i]  
+                
+                if self._pwm_base[i] > 255.0 :
+                    self._pwm_base[i] = 255.0 
+                    self._sum_error[i] = self._sum_error[i] - self._error[i] * pid_dt
+
+                elif self._pwm_base[i] < -255.0 :
+                    self._pwm_base[i] = -255.0 
+                    self._sum_error[i] = self._sum_error[i] - self._error[i] * pid_dt
+
             self._pwm_pub.data[0] = self._pwm_base[0] # left 
             self._pwm_pub.data[1] = self._pwm_base[2] # right 
             self._pwm_pub.data[2] = self._pwm_base[3] # right B
