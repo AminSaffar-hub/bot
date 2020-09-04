@@ -36,5 +36,5 @@ bot_velocity_controller:
       has_velocity_limits    : true
       max_velocity           : 15.0   # rad/s
       has_acceleration_limits: true
-      max_acceleration       : 15   # rad/s^2
+      max_acceleration       : 30   # rad/s^2
 
