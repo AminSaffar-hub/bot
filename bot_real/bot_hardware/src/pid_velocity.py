@@ -14,7 +14,7 @@ class PID_Control:
         self._KP = 0.05
         #self._KP = 5
         self._KD = 0
-        #self._KI = 2
+        #self._KI = 5
         self._KI = 0.00005
 
         self._Vc = []

@@ -1,11 +1,14 @@
 #TRAJECTORY CONTROL
-#differential_drive: true
+differential_drive: true
+NavfnROS:
+  allow_unknown: true # Specifies whether or not to allow navfn to create plans that traverse unknown space.
+  default_tolerance: 0.1 # A tolerance on the goal point for the planner.
 
 DWAPlannerROS:
   # Robot configuration parameters  
   acc_lim_x: 10
   acc_lim_y: 0
-  acc_lim_theta: 30
+  acc_lim_theta: 20
 
   max_vel_x: 1.6
   min_vel_x: -1.6
@@ -13,8 +16,8 @@ DWAPlannerROS:
   min_vel_y: 0 
   
 
-  max_trans_vel: 1.6
-  min_trans_vel: 0.6
+  max_trans_vel: 2.0
+  min_trans_vel: 0.7
   max_rot_vel: 15.0
   min_rot_vel: 8.0
   
@@ -26,12 +29,12 @@ DWAPlannerROS:
   latch_xy_goal_tolerance: false
 
   # # Forward Simulation Parameters
-  sim_time: 1.0
+  sim_time: 0.5
   sim_granularity: 0.02
   vx_samples: 6
   vy_samples: 0
   vtheta_samples: 20
-  penalize_negative_x: true
+  penalize_negative_x: false
 
   # # Trajectory scoring parameters
   path_distance_bias: 32.0 # The weighting for how much the controller should stay close to the path it was given
